@@ -1,5 +1,5 @@
 // SmartLogistics AI frontend configuration
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://smart-logistics-ai-6hct.onrender.com";
 
 const $ = (selector) => document.querySelector(selector);
 
