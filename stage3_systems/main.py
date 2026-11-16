@@ -41,6 +41,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
+# Create FastAPI application
 app = FastAPI(
     title="SmartLogistics AI API",
     description="Authenticated shipment booking and tracking API.",
@@ -54,7 +55,12 @@ allowed_origins = [
     origin.strip()
     for origin in os.getenv(
         "FRONTEND_ORIGINS",
-        "http://localhost:5173,http://127.0.0.1:5173,http://localhost:5500,http://127.0.0.1:5500"
+        (
+            "http://localhost:5173,"
+            "http://127.0.0.1:5173,"
+            "http://localhost:5500,"
+            "http://127.0.0.1:5500"
+        ),
     ).split(",")
     if origin.strip()
 ]
@@ -63,11 +69,12 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
     allow_credentials=False,
-    allow_methods=["GET", "POST", "PATCH", "OPTIONS"],
-    allow_headers=["Authorization", "Content-Type"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
+# API home route
 @app.get("/")
 def home():
     return {

@@ -29,3 +29,9 @@ stage2_automation/shipments.json
 .vscode/
 .DS_Store
 Thumbs.db
+
+node_modules/
+.env
+.venv/
+__pycache__/
+*.pyc
